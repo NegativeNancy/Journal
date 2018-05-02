@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Journal</string>
+    <string name="entry_title">Placeholder Title</string>
+    <string name="entry_date">2018-01-01 00:00:00</string>
+    <string name="entry_mood">placeholder mood</string>
+    <string name="input_submit">Submit</string>
+    <string name="input_title">Title</string>
+    <string name="input_field">Enter your journal entry here</string>
+    <string name="detail_message">Placeholder message</string>
 </resources>

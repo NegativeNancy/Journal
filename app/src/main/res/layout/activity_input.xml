@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InputActivity">
+
+    <EditText
+        android:id="@+id/inputTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/input_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:gravity="bottom|start"
+        android:hint="@string/input_field"
+        android:inputType="textMultiLine"
+        android:textAlignment="gravity"
+        app:layout_constraintBottom_toTopOf="@+id/inputButtonAngry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputTitle" />
+
+    <ImageButton
+        android:id="@+id/inputButtonAngry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:scaleType="centerCrop"
+        android:src="@drawable/angry_small"
+        android:onClick="angryClicked"
+        app:layout_constraintBottom_toTopOf="@+id/inputSubmit"
+        app:layout_constraintEnd_toStartOf="@+id/inputButtonSad"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/inputButtonSad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sad_small"
+        android:onClick="sadClicked"
+        app:layout_constraintEnd_toStartOf="@+id/inputButtonNeutral"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/inputButtonAngry"
+        app:layout_constraintTop_toTopOf="@+id/inputButtonAngry" />
+
+    <ImageButton
+        android:id="@+id/inputButtonNeutral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:scaleType="centerCrop"
+        android:src="@drawable/neutral_small"
+        android:onClick="neutralClicked"
+        app:layout_constraintEnd_toStartOf="@+id/inputButtonHappy"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/inputButtonSad"
+        app:layout_constraintTop_toTopOf="@+id/inputButtonSad" />
+
+    <ImageButton
+        android:id="@+id/inputButtonHappy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:scaleType="centerCrop"
+        android:src="@drawable/happy_small"
+        android:onClick="happyClicked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/inputButtonNeutral"
+        app:layout_constraintTop_toTopOf="@+id/inputButtonNeutral" />
+
+    <Button
+        android:id="@+id/inputSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/input_submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
