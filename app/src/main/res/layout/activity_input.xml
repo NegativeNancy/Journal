@@ -14,7 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences|textAutoCorrect"
         android:hint="@string/input_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:ems="10"
         android:gravity="bottom|start"
         android:hint="@string/input_field"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         android:textAlignment="gravity"
         app:layout_constraintBottom_toTopOf="@+id/inputButtonAngry"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,11 +47,12 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:scaleType="centerCrop"
         android:src="@drawable/angry_small"
-        android:onClick="angryClicked"
+        android:onClick="moodClicked"
         app:layout_constraintBottom_toTopOf="@+id/inputSubmit"
         app:layout_constraintEnd_toStartOf="@+id/inputButtonSad"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/angry_face" />
 
     <ImageButton
         android:id="@+id/inputButtonSad"
@@ -60,11 +61,12 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:scaleType="centerCrop"
         android:src="@drawable/sad_small"
-        android:onClick="sadClicked"
+        android:onClick="moodClicked"
         app:layout_constraintEnd_toStartOf="@+id/inputButtonNeutral"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/inputButtonAngry"
-        app:layout_constraintTop_toTopOf="@+id/inputButtonAngry" />
+        app:layout_constraintTop_toTopOf="@+id/inputButtonAngry"
+        android:contentDescription="@string/sad_face" />
 
     <ImageButton
         android:id="@+id/inputButtonNeutral"
@@ -73,11 +75,12 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:scaleType="centerCrop"
         android:src="@drawable/neutral_small"
-        android:onClick="neutralClicked"
+        android:onClick="moodClicked"
         app:layout_constraintEnd_toStartOf="@+id/inputButtonHappy"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/inputButtonSad"
-        app:layout_constraintTop_toTopOf="@+id/inputButtonSad" />
+        app:layout_constraintTop_toTopOf="@+id/inputButtonSad"
+        android:contentDescription="@string/neutral_face" />
 
     <ImageButton
         android:id="@+id/inputButtonHappy"
@@ -87,11 +90,12 @@
         android:backgroundTint="@android:color/holo_green_light"
         android:scaleType="centerCrop"
         android:src="@drawable/happy_small"
-        android:onClick="happyClicked"
+        android:onClick="moodClicked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/inputButtonNeutral"
-        app:layout_constraintTop_toTopOf="@+id/inputButtonNeutral" />
+        app:layout_constraintTop_toTopOf="@+id/inputButtonNeutral"
+        android:contentDescription="@string/happy_face" />
 
     <Button
         android:id="@+id/inputSubmit"
@@ -100,6 +104,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:onClick="inputSubmitClicked"
         android:text="@string/input_submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

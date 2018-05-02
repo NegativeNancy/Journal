@@ -1,19 +1,15 @@
 package com.example.ivodenhertog.journal;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class InputActivity extends AppCompatActivity {
 
+    private String mood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,32 +17,27 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input);
     }
 
-    public void angryClicked(View view) {
-        ImageButton angry = findViewById(R.id.inputButtonAngry);
-        ColorStateList backgroundColor = angry.getBackgroundTintList();
+    public void moodClicked(View view) {
+        int moodId = view.getId();
 
-        changeColor(angry, backgroundColor);
-    }
+        ImageButton button = findViewById(moodId);
+        ColorStateList backgroundColor = button.getBackgroundTintList();
+        changeColor(button, backgroundColor);
 
-    public void sadClicked(View view) {
-        ImageButton sad = findViewById(R.id.inputButtonSad);
-        ColorStateList backgroundColor = sad.getBackgroundTintList();
-
-        changeColor(sad, backgroundColor);
-    }
-
-    public void neutralClicked(View view) {
-        ImageButton neutral = findViewById(R.id.inputButtonNeutral);
-        ColorStateList backgroundColor = neutral.getBackgroundTintList();
-
-        changeColor(neutral, backgroundColor);
-    }
-
-    public void happyClicked(View view) {
-        ImageButton happy = findViewById(R.id.inputButtonHappy);
-        ColorStateList backgroundColor = happy.getBackgroundTintList();
-
-        changeColor(happy, backgroundColor);
+        switch (moodId) {
+            case R.id.inputButtonAngry:
+                mood = "angry";
+                break;
+            case R.id.inputButtonSad:
+                mood = "sad";
+                break;
+            case R.id.inputButtonNeutral:
+                mood = "neutral";
+                break;
+            case R.id.inputButtonHappy:
+                mood = "happy";
+                break;
+        }
     }
 
     public void changeColor(ImageButton btn, ColorStateList backgroundColor) {
@@ -58,5 +49,22 @@ public class InputActivity extends AppCompatActivity {
         } else {
             btn.setBackgroundTintList(light);
         }
+    }
+
+
+    public void inputSubmitClicked(View view) {
+        JournalEntry entry = new JournalEntry();
+        EntryDatabase insertDB = EntryDatabase.getInstance(this);
+
+        String title = ((TextView) findViewById(R.id.inputTitle)).getText().toString();
+        String content = ((TextView) findViewById(R.id.inputField)).getText().toString();
+
+        entry.setTitle(title);
+        entry.setContent(content);
+        entry.setMood(mood);
+
+        insertDB.insert(entry);
+
+        finish();
     }
 }

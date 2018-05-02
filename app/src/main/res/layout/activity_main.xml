@@ -7,8 +7,10 @@
     tools:context=".MainActivity">
 
     <ListView
+        android:id="@+id/mainList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:longClickable="true"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addEntry"
@@ -19,5 +21,5 @@
         android:src="@android:drawable/ic_menu_add"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="addEntryClicked" />
+        android:onClick="addEntry" />
 </android.support.design.widget.CoordinatorLayout>
