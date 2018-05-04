@@ -8,18 +8,16 @@ import android.widget.ImageView;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 
-public class EntryAdapter extends ResourceCursorAdapter {
-    public EntryAdapter(Context context, int layout, Cursor c, int flags) {
+class EntryAdapter extends ResourceCursorAdapter {
+    public EntryAdapter(Context context, Cursor c, int flags) {
         super(context, R.layout.entry_row, c, flags);
     }
 
     public void bindView(View view, Context context, Cursor cursor) {
-        int _idInt = cursor.getColumnIndex("_id");
         int titleInt = cursor.getColumnIndex("title");
         int dateInt = cursor.getColumnIndex("timestamp");
         int moodInt = cursor.getColumnIndex("mood");
 
-        long id = cursor.getLong(_idInt);
         String title = cursor.getString(titleInt);
         String date = cursor.getString(dateInt);
         String mood = cursor.getString(moodInt);

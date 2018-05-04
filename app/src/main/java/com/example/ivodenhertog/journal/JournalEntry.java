@@ -1,14 +1,13 @@
 package com.example.ivodenhertog.journal;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
-public class JournalEntry implements Serializable {
+class JournalEntry implements Serializable {
     private int id;
     private String title;
     private String content;
     private String mood;
-    private Timestamp timestamp;
+    private String timestamp;
 
     public int getId() {
         return id;
@@ -42,13 +41,11 @@ public class JournalEntry implements Serializable {
         this.mood = mood;
     }
 
-    public Timestamp getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 }
-
-

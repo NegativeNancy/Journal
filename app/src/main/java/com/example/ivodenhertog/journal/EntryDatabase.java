@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.Objects;
+
 public class EntryDatabase extends SQLiteOpenHelper {
 
     private static EntryDatabase instance;
@@ -14,13 +16,14 @@ public class EntryDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE entries (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "title TEXT, content TEXT, mood TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP);");
+                "title TEXT, content TEXT, mood TEXT, " +
+                "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP);");
 
-        String entry1 = "INSERT INTO entries (title, content, mood, timestamp) VALUES (\"Test " +
+        String entry1 = "INSERT INTO entries (title, content, mood) VALUES (\"Test " +
                 "entry 1\", \"This is a test message for test entry 1\", \"happy\");";
-        String entry2 = "INSERT INTO entries (title, content, mood, timestamp) VALUES (\"Test" +
+        String entry2 = "INSERT INTO entries (title, content, mood) VALUES (\"Test " +
                 "entry 2\", \"This is a test message for test entry 2\", \"happy\");";
-        String entry3 = "INSERT INTO entries (title, content, mood, timestamp) VALUES (\"Test " +
+        String entry3 = "INSERT INTO entries (title, content, mood) VALUES (\"Test " +
                 "entry 3\", \"This is a test message for test entry 3\", \"happy\");";
 
         db.execSQL(entry1);
@@ -32,6 +35,14 @@ public class EntryDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + "entries");
         onCreate(db);
+    }
+
+    public Boolean resetDatabase() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + "entries");
+        onCreate(db);
+
+        return true;
     }
 
     private EntryDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -49,8 +60,7 @@ public class EntryDatabase extends SQLiteOpenHelper {
 
     public Cursor selectAll() {
         SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + dbName, null);
-        return cursor;
+        return db.rawQuery("SELECT * FROM " + dbName, null);
     }
 
     public void insert(JournalEntry entry) {
@@ -63,8 +73,8 @@ public class EntryDatabase extends SQLiteOpenHelper {
         db.insert(dbName, null, content);
     }
 
-    public void delete(Long id) {
+    public void delete(long id) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(dbName, "_id=" + id.toString(), null);
+        db.delete(dbName, "_id=" + Objects.toString(id, null), null);
     }
 }

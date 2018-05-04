@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/entry_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/detailImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,5 +51,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailDate" />
+
+    <ImageView
+        android:id="@+id/detailImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:rotation="270"
+        app:layout_constraintBottom_toBottomOf="@+id/detailDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detailTitle"
+        app:srcCompat="@drawable/neutral"
+        android:contentDescription="@string/mood_image" />
 
 </android.support.constraint.ConstraintLayout>
